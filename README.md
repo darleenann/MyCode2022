@@ -4,6 +4,8 @@ tracking my code
 
 # mycode (Project Title)
 
+#Learning version control with github
+
 The purpose of putting up this repo is making Lab programs from training.
 
 ## Getting Started
