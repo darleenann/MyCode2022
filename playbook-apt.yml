@@ -1,0 +1,12 @@
+---
+- name: Playbook - Install figlet  # metadata
+  hosts: planetexpress:!farnsworth # we want to take the planetexpress group 
+  connection: ssh  # default is to use the connection plugin ssh.py
+  gather_facts: yes # default is yes
+
+  tasks:   # a list of what we want to do
+  - name: using apt to install figlet  # metadata
+    apt:
+        name: figlet
+        state: present
+    become: yes
