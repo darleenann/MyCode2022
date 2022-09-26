@@ -1,5 +1,5 @@
 # MyCode2022
-# Learing python and ansible.  Hopefully will be able to use it more now.
+# Learning python and ansible.  Hopefully will be able to use it more now.
 tracking my code
 
 # mycode (Project Title)
