@@ -1,0 +1,18 @@
+- hosts: bender
+  gather_facts: no
+
+  # vars:
+  # smurfs: violet
+
+    #  vars_files:
+    #- ~/MyCode2022/vars/smurfcolor.yml
+
+    #vars_prompt:
+    #- name: smurfs
+    #  prompt: "what color are smurfs?"
+    #  private: no
+    #  default: "elephant"
+
+  tasks:
+    - debug:
+        msg: "Smurfs are {{ smurfs }}"
