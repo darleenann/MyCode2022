@@ -1,0 +1,43 @@
+---
+- name: a playbook that makes a new directory on hosts, and puts a file in the directory
+  hosts: looneytunes
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - name:  create directory called challenge using file module
+      become_user: root
+      become: true
+      file:
+        path: "/home/{{ ansible_user }}/challenge/"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+     
+    - name: using the get_uri module download the downloadme.txt into the challenge directory
+      uri:
+        method: GET
+        url: https://raw.githubusercontent.com/csfeeser/ansible_essentials/main/data/downloadme.txt
+        status_code: 200
+        return_content: yes
+      register: validateurl
+
+    - name: show that the content was retrieved
+      debug:
+        var: validateurl
+
+    - name: put downloadme.txt
+      copy:
+        content: "{{ validateurl.content }}"
+        dest: "/home/{{ ansible_user }}/challenge/downloadme.txt" 
+    - name: replacing PLACEHOLDER in downloadme.txt with Darleen
+      replace:
+        path: "/home/{{ ansible_user }}/challenge/downloadme.txt"
+        regexp: "PLACEHOLDER"
+        replace: "Darleen"
+        backup: yes
+      become: true
+
+
+
+
