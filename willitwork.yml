@@ -1,0 +1,13 @@
+---
+- name: Apache Server installed
+  hosts: web
+  gather_facts: no
+  become: yes
+
+  roles:
+    - ~/galaxy/roles/challenge
+
+  tasks:
+    - name: testing msg
+      debug:
+        msg: "will it work?"
