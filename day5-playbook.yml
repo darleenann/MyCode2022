@@ -1,0 +1,21 @@
+---
+- name: making dirs
+  hosts: bender
+  connection: ssh
+  gather_facts: no
+
+  vars: 
+    nineties:
+      - Teenage
+      - Mutant
+      - Ninja
+      - Turtles
+      
+  tasks:
+
+  - name: Making directories from a list
+    ansible.builtin.file:
+      path: "{{ item | lower }}" # add the item keyword!
+      state: directory
+    # add the loop keyword!
+    loop: "{{ nineties }}"
